@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  backend:
+    build: ./node-api
+    container_name: backend_api_c
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./node-api:/app
+      - /app/node_modules
+  frontend:
+    build: ./react-frontend
+    container_name: frontend_react_c
+    ports:
+      - "3000:3000"
+    #Comment below volumes line if you're on a window
+    volumes:
+      - ./react-frontend:/app
+      - /app/node_modules
+    #Uncomment below line if you're on a window
+    # stdin_open: true
+    # tty: true
